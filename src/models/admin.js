@@ -1,53 +1,44 @@
 const { Schema, model } = require("mongoose");
 
-const UsuarioSchema = Schema({
-  cedula: {
-    type: String,
-  },
+const AdminSchema = Schema({
   primerNombre: {
     type: String,
+    default: "FALTA EL primerNombre",
   },
   segundoNombre: {
     type: String,
+    default: "FALTA EL segundoNombre",
   },
   primerApellido: {
     type: String,
+    default: "FALTA EL primerApellido",
   },
   segundoApellido: {
     type: String,
+    default: "FALTA EL segundoApellido",
+  },
+  cedula: {
+    type: String,
+    default: "FALTA EL cedula",
   },
   telefono: {
     type: String,
+    default: "FALTA EL telefono",
   },
   correo: {
     type: String,
     required: [true, "El correo es obligatorio"],
     unique: true,
-  },
-  horas: {
-    type: String,
-  },
-  // admin
-  fechaInicio: {
-    type: String,
-  },
-  // admin
-  fechaFin: {
-    type: String,
-  },
-  tutora: {
-    type: String,
-  },
-  supervisora: {
-    type: String,
+    default: "FALTA EL correo",
   },
   institucion: {
     type: String,
+    default: "FALTA EL institucion",
   },
   direccion: {
     type: String,
+    default: "FALTA EL direccion",
   },
-
   password: {
     type: String,
     required: [true, "El password es obligatorio"],
@@ -55,9 +46,9 @@ const UsuarioSchema = Schema({
   rol: {
     type: String,
     // required: true,
-    default: "ALUGNO_ROLE",
-    emun: ["ADMIN_ROLE", "TUTOR_ROLE", "SUPERVISORA_ROLE", "ALUGNO_ROLE"],
+    default: "ADMIN_ROLE",
+    emun: ["ADMIN_ROLE"],
   },
 });
 
-module.exports = model("Usuario", UsuarioSchema);
+module.exports = model("Admin", AdminSchema);
