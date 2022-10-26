@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { logear } = require("../middlewares/login");
+const { logear } = require("../controllers/login");
 
 const router = Router();
 

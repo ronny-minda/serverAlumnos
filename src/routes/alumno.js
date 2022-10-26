@@ -5,7 +5,7 @@ const {
   crearAlumno,
   actualizarAlumno,
   borarAlumno,
-} = require("../middlewares/alumno");
+} = require("../controllers/alumno");
 
 const router = Router();
 

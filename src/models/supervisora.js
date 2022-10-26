@@ -1,21 +1,9 @@
 const { Schema, model } = require("mongoose");
 
 const SupervisoraSchema = Schema({
-  primerNombre: {
+  nombre: {
     type: String,
     default: "FALTA EL primerNombre",
-  },
-  segundoNombre: {
-    type: String,
-    default: "FALTA EL segundoNombre",
-  },
-  primerApellido: {
-    type: String,
-    default: "FALTA EL primerApellido",
-  },
-  segundoApellido: {
-    type: String,
-    default: "FALTA EL segundoApellido",
   },
   cedula: {
     type: String,
@@ -25,24 +13,21 @@ const SupervisoraSchema = Schema({
     type: String,
     default: "FALTA EL telefono",
   },
+  numeroAsignacion: {
+    type: String,
+    default: "0",
+  },
   correo: {
     type: String,
     default: "FALTA EL correo",
   },
-  institucion: {
-    type: String,
-    default: "FALTA EL institucion",
-  },
-  direccion: {
-    type: String,
-    default: "FALTA EL direccion",
-  },
-  rol: {
-    type: String,
-    // required: true,
-    default: "TUTOR_ROLE",
-    emun: ["TUTOR_ROLE", "SUPERVISORA_ROLE"],
-  },
+
+  // rol: {
+  //   type: String,
+  //   // required: true,
+  //   default: "TUTOR_ROLE",
+  //   emun: ["TUTOR_ROLE", "SUPERVISORA_ROLE"],
+  // },
 });
 
 module.exports = model("Supervisora", SupervisoraSchema);

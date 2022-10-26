@@ -4,7 +4,7 @@ const {
   crear,
   borrar,
   pedirTodos,
-} = require("../controllers/supervisora");
+} = require("../controllers/tutora");
 
 const router = Router();
 

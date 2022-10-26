@@ -21,6 +21,7 @@ const main = () => {
   app.use("/api/admin", require("./routes/admin"));
   app.use("/api/institucion", require("./routes/institucion"));
   app.use("/api/supervisora", require("./routes/supervisora"));
+  app.use("/api/tutora", require("./routes/tutora"));
 
   app.listen(PORT, () => {
     console.log(`Server on port ${PORT}`);

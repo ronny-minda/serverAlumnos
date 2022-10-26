@@ -3,11 +3,13 @@ const {
   actualizarDatos,
   crear,
   borrar,
-} = require("../middlewares/institucion");
+  buscarTodos,
+} = require("../controllers/institucion");
 
 const router = Router();
 
 router.post("/crear", crear);
+router.post("/buscarTodos", buscarTodos);
 router.put("/actualizarDatos", actualizarDatos);
 router.delete("/borrar", borrar);
 

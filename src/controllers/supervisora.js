@@ -1,6 +1,6 @@
 const Supervisora = require("../models/supervisora");
 // const bcryptjs = require("bcryptjs");
-// const { generarJWT } = require("../controllers/generarJWT");
+// const { generarJWT } = require("../middlewares/generarJWT");
 
 const pedirTodos = async (req, res) => {
   // console.log("pedirTodos");
@@ -17,7 +17,7 @@ const crear = async (req, res) => {
   const veificar = await Supervisora.findOne({ cedula });
 
   if (veificar !== null) {
-    return res.status(400).json({ msg: "La supervisora ya existe" });
+    return res.json({ msg: "La supervisora ya existe" });
   }
 
   const supervisora = new Supervisora(req.body);

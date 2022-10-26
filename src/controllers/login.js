@@ -1,7 +1,7 @@
 const Alumno = require("../models/alumno");
 const Admin = require("../models/admin");
 const bcryptjs = require("bcryptjs");
-const { generarJWT } = require("../controllers/generarJWT");
+const { generarJWT } = require("../middlewares/generarJWT");
 
 const logear = async (req, res) => {
   const { cedula, password } = req.body;

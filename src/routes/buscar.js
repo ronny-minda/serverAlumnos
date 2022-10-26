@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { buscarCedula } = require("../middlewares/buscar");
+const { buscarCedula } = require("../controllers/buscar");
 
 const router = Router();
 

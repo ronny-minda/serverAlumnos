@@ -27,63 +27,53 @@ const AlumnoSchema = Schema({
   },
   correo: {
     type: String,
-    required: [true, "El correo es obligatorio"],
-    unique: true,
-    default: "FALTA EL correo",
+    // required: [true, "El correo es obligatorio"],
+    // unique: true,
+    // default: "FALTA EL correo",
   },
 
+  curso: {
+    type: String,
+    default: "6to",
+    emun: ["6to", "7mo", "8vo", "9no"],
+  },
   horas: {
-    // las calculo yo
     type: String,
     default: "FALTA EL horas",
   },
   fechaInicio: {
-    // las calculo yo
     type: String,
     default: "FALTA EL fechaInicio",
   },
   fechaFin: {
-    // las calculo yo
     type: String,
     default: "FALTA EL fechaFin",
   },
 
-  direccion: {
-    type: String,
-    default: "FALTA EL direccion",
-  },
   password: {
     type: String,
     required: [true, "El password es obligatorio"],
   },
+
+  tutora: {
+    type: Schema.Types.ObjectId,
+    ref: "Tutora",
+  },
+  institucion: {
+    type: Schema.Types.ObjectId,
+    ref: "Institucion",
+  },
+  supervisora: {
+    type: Schema.Types.ObjectId,
+    ref: "Supervisora",
+  },
+
   rol: {
     type: String,
     // required: true,
     default: "ALUGNO_ROLE",
     emun: ["ALUGNO_ROLE"],
   },
-  curso: {
-    type: String,
-    default: "6",
-    emun: ["6", "7", "8", "9"],
-  },
-
-  institucion: {
-    type: Schema.Types.ObjectId,
-    ref: "Institucion",
-    default: "6353871f3821598661b79ce9",
-  },
-
-  // tutora: {
-  //   type: Schema.Types.ObjectId,
-  //   ref: "Supervisora",
-  //   default: "6353871f3821598661b79ce9",
-  // },
-  // supervisora: {
-  //   type: Schema.Types.ObjectId,
-  //   ref: "Supervisora",
-  //   default: "6353871f3821598661b79ce9",
-  // },
 });
 
 module.exports = model("Alumno", AlumnoSchema);

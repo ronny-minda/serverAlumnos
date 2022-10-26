@@ -4,7 +4,7 @@ const {
   crearCuenta,
   borrar,
   buscar,
-} = require("../middlewares/admin");
+} = require("../controllers/admin");
 
 const router = Router();
 

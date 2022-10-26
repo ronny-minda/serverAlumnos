@@ -1,6 +1,6 @@
 const Admin = require("../models/admin");
 const bcryptjs = require("bcryptjs");
-const { generarJWT } = require("../controllers/generarJWT");
+const { generarJWT } = require("../middlewares/generarJWT");
 
 const buscar = async (req, res) => {
   console.log("desde buscar");

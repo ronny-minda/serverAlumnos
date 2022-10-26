@@ -1,6 +1,6 @@
 const Alumno = require("../models/alumno");
 const bcryptjs = require("bcryptjs");
-const { generarJWT } = require("../controllers/generarJWT");
+const { generarJWT } = require("../middlewares/generarJWT");
 
 const buscarAlumnoID = async (req, res) => {
   console.log("desde buscar Alumno ID");
