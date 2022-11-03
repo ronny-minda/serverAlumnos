@@ -6,8 +6,14 @@ const pedirTodos = async (req, res) => {
   // console.log("pedirTodos");
 
   const todos = await Supervisora.find();
+  // const numero = todos.length;
 
   console.log(todos);
+  // res.status(200).json({
+  //   numero,
+  //   todos,
+  // });
+
   res.status(200).json(todos);
 };
 

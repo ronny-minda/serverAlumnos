@@ -7,18 +7,23 @@ const InstitucionSchema = Schema({
   direccion: {
     type: String,
   },
-  numeroPorTutora: {
-    type: String,
-  },
   tutora: [
     {
       type: Schema.Types.ObjectId,
       ref: "Tutora",
     },
   ],
+  horasUsadas: {
+    type: String,
+    default: "360",
+  },
+  numeroAsignacionBoleano: {
+    type: Boolean,
+    default: false,
+  },
   numeroAsignacion: {
     type: String,
-    default: "1",
+    default: "2",
   },
   supervisora: [
     {

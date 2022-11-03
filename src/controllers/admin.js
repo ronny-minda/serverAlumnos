@@ -1,4 +1,5 @@
 const Admin = require("../models/admin");
+const Alumno = require("../models/alumno");
 const bcryptjs = require("bcryptjs");
 const { generarJWT } = require("../middlewares/generarJWT");
 
@@ -56,6 +57,10 @@ const actualizarDatos = async (req, res) => {
   }
 
   const admin = await Admin.findByIdAndUpdate(id, resto, { new: true });
+
+  if (admin == null) {
+    admin = await Alumno.findByIdAndUpdate(id, resto, { new: true });
+  }
 
   console.log({ admin });
 

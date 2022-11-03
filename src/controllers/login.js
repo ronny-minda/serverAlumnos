@@ -11,7 +11,10 @@ const logear = async (req, res) => {
   usuario = await Admin.findOne({ cedula });
 
   if (usuario === null) {
-    usuario = await Alumno.findOne({ cedula });
+    usuario = await Alumno.findOne({ cedula })
+      .populate("supervisora")
+      .populate("tutora")
+      .populate("institucion");
   }
 
   if (!usuario) {

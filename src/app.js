@@ -23,6 +23,8 @@ const main = () => {
   app.use("/api/supervisora", require("./routes/supervisora"));
   app.use("/api/tutora", require("./routes/tutora"));
 
+  app.use("/api/prueba", require("./routes/prueba"));
+
   app.listen(PORT, () => {
     console.log(`Server on port ${PORT}`);
   });

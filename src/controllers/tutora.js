@@ -2,9 +2,9 @@ const Tutora = require("../models/tutora");
 
 const pedirTodos = async (req, res) => {
   console.log("pedirTodos");
-  //   const todos = await Supervisora.find();
-  //   console.log(todos);
-  //   res.status(200).json(todos);
+  const todos = await Tutora.find();
+  console.log(todos);
+  res.status(200).json(todos);
 };
 
 const crear = async (req, res) => {
@@ -12,7 +12,7 @@ const crear = async (req, res) => {
 
   const veificar = await Tutora.findOne({ nombre: nombre });
   if (veificar !== null) {
-    return res.status(400).json({ msg: "La tutora ya existe" });
+    return res.json({ msg: "La tutora ya existe" });
   }
 
   const tutora = new Tutora(req.body);
@@ -36,16 +36,14 @@ const actualizarDatos = async (req, res) => {
 };
 
 const borrar = async (req, res) => {
-  //   const { id } = req.body;
-  //   const veificar = await Supervisora.findById(id);
-  //   if (veificar == null) {
-  //     return res.status(400).json({ msg: "La Supervisora no existe" });
-  //   }
-  //   const supervisora = await Supervisora.findByIdAndDelete(id, { new: true });
-  //   console.log({ supervisora });
-  //   res
-  //     .status(200)
-  //     .json({ msg: `El usuaio ${supervisora.primerNombre} esta borrada` });
+  const { id } = req.body;
+  const veificar = await Tutora.findById(id);
+  if (veificar == null) {
+    return res.status(400).json({ msg: "La Tutora no existe" });
+  }
+  const tutora = await Tutora.findByIdAndDelete(id, { new: true });
+  console.log({ tutora });
+  res.status(200).json({ msg: `El usuaio ${tutora.nombre} esta borrada` });
 };
 
 module.exports = {

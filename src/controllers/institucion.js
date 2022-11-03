@@ -17,13 +17,19 @@ const crear = async (req, res) => {
 
   console.log({ institucion });
 
-  res.status(200).json({ institucion });
+  res
+    .status(200)
+    .json({ msg: `La institucion ${institucion.nombre} fue creada` });
 };
 
 const buscarTodos = async (req, res) => {
-  const todos = await Institucion.find().populate({
-    path: "supervisora",
-  });
+  const todos = await Institucion.find()
+    .populate({
+      path: "supervisora",
+    })
+    .populate({
+      path: "tutora",
+    });
   res.status(200).json(todos);
 };
 

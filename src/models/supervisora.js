@@ -13,6 +13,10 @@ const SupervisoraSchema = Schema({
     type: String,
     default: "FALTA EL telefono",
   },
+  horasUsadas: {
+    type: String,
+    default: "0",
+  },
   numeroAsignacion: {
     type: String,
     default: "0",

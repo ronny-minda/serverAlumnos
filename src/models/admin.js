@@ -5,18 +5,6 @@ const AdminSchema = Schema({
     type: String,
     default: "FALTA EL primerNombre",
   },
-  segundoNombre: {
-    type: String,
-    default: "FALTA EL segundoNombre",
-  },
-  primerApellido: {
-    type: String,
-    default: "FALTA EL primerApellido",
-  },
-  segundoApellido: {
-    type: String,
-    default: "FALTA EL segundoApellido",
-  },
   cedula: {
     type: String,
     default: "FALTA EL cedula",
