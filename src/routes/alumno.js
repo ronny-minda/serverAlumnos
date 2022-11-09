@@ -7,6 +7,7 @@ const {
   actualizarAlumno,
   borarAlumno,
   resetear,
+  cambiarFecha,
 } = require("../controllers/alumno");
 
 const router = Router();
@@ -24,5 +25,7 @@ router.put("/actualizarAlumno", actualizarAlumno);
 router.post("/borarAlumno", borarAlumno);
 
 router.post("/resetear", resetear);
+
+router.post("/cambiarFecha", cambiarFecha);
 
 module.exports = router;

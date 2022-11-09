@@ -423,6 +423,59 @@ const resetear = async (req, res) => {
   res.json({ msg: "todo esta reseteado" });
 };
 
+const cambiarFecha = async (req, res) => {
+  console.log("cambiarFecha");
+
+  const alumnos = await Alumno.find();
+
+  alumnos.map((i) => {
+    const ejecu = async () => {
+      if (i.horas == "96H") {
+        //12
+
+        i.fechaInicio = "2022-11-10";
+        i.fechaFin = "2022-11-25";
+      }
+
+      if (i.horas == "144H") {
+        //18
+
+        i.fechaInicio = "2022-11-10";
+        i.fechaFin = "2022-12-05";
+      }
+
+      if (i.horas == "240") {
+        //30
+
+        i.fechaInicio = "2022-11-10";
+        i.fechaFin = "2022-12-21";
+      }
+
+      if (i.horas == "480H") {
+        //60
+
+        i.fechaInicio = "2022-11-10";
+        i.fechaFin = "2023-02-01";
+      }
+
+      const { _id, ...resto } = i;
+
+      const alumno = await Alumno.findByIdAndUpdate(_id, resto, {
+        new: true,
+      });
+
+      console.log("alumno");
+      console.log(alumno);
+    };
+
+    ejecu();
+  });
+
+  // console.log(alumnos);
+
+  res.json({ alumnos });
+};
+
 module.exports = {
   buscarCedula,
   buscarAlumnoID,
@@ -431,4 +484,5 @@ module.exports = {
   actualizarAlumno,
   borarAlumno,
   resetear,
+  cambiarFecha,
 };
