@@ -22,17 +22,17 @@ const crear = async (req, res) => {
 };
 
 const actualizarDatos = async (req, res) => {
-  //   const { id, ...resto } = req.body;
-  //   const veificar = await Supervisora.findById(id);
-  //   console.log({ veificar });
-  //   if (veificar == null) {
-  //     return res.status(400).json({ msg: "La supervisora no existe" });
-  //   }
-  //   const supervisora = await Supervisora.findByIdAndUpdate(id, resto, {
-  //     new: true,
-  //   });
-  //   console.log({ supervisora });
-  //   res.status(200).json(supervisora);
+  const { id, ...resto } = req.body;
+  const veificar = await Tutora.findById(id);
+  console.log({ veificar });
+  if (veificar == null) {
+    return res.status(400).json({ msg: "La Tutora no existe" });
+  }
+  const tutora = await Tutora.findByIdAndUpdate(id, resto, {
+    new: true,
+  });
+  console.log({ tutora });
+  res.status(200).json({ msg: `La tutora ${tutora.nombre} esta acualizada` });
 };
 
 const borrar = async (req, res) => {

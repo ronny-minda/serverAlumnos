@@ -11,6 +11,6 @@ const router = Router();
 router.post("/crear", crear);
 router.post("/buscarTodos", buscarTodos);
 router.put("/actualizarDatos", actualizarDatos);
-router.delete("/borrar", borrar);
+router.post("/borrar", borrar);
 
 module.exports = router;

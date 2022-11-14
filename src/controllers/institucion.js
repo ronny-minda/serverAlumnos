@@ -34,7 +34,7 @@ const buscarTodos = async (req, res) => {
 };
 
 const actualizarDatos = async (req, res) => {
-  const { nombre, id } = req.body;
+  const { id, ...resto } = req.body;
 
   const veificar = await Institucion.findById(id);
 
@@ -44,13 +44,9 @@ const actualizarDatos = async (req, res) => {
     return res.status(400).json({ msg: "La institucion no existe" });
   }
 
-  const institucion = await Institucion.findByIdAndUpdate(
-    id,
-    { nombre },
-    {
-      new: true,
-    }
-  );
+  const institucion = await Institucion.findByIdAndUpdate(id, resto, {
+    new: true,
+  });
 
   console.log({ institucion });
 
@@ -59,6 +55,8 @@ const actualizarDatos = async (req, res) => {
 
 const borrar = async (req, res) => {
   const { id } = req.body;
+
+  console.log(req.body);
 
   const veificar = await Institucion.findById(id);
 
