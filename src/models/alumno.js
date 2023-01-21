@@ -21,6 +21,10 @@ const AlumnoSchema = Schema({
     type: String,
     default: "FALTA EL cedula",
   },
+  grupo: {
+    type: String,
+    default: "G0",
+  },
   telefono: {
     type: String,
     default: "FALTA EL telefono",

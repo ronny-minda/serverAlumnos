@@ -70,9 +70,41 @@ const borrar = async (req, res) => {
   res.status(200).json({ msg: `La institucion ${admin.nombre} esta borrada` });
 };
 
+const crearGrupoGobal = async (req, res) => {
+
+  const { cantidad, fecha } = req.body
+
+  console.log(req.body)
+
+  let numeroGrupo = 0
+
+  const todasIntituciones = await Institucion.find()
+
+  todasIntituciones.map( async (i)=> {
+
+    i.grupo[i.grupo.length ] = {
+      nombre: `G${i.grupo.length}`,
+      cantidad: cantidad,
+      fecha: fecha,
+      usuarios: []
+    }
+
+    numeroGrupo = i.grupo.length - 1
+
+    const { id, ...resto } = i
+
+    await Institucion.findByIdAndUpdate(id, resto, {
+      new: true,
+    });
+  })
+
+  res.status(200).json({msg: "crearGrupoGobal", numeroGrupo})
+}
+
 module.exports = {
   actualizarDatos,
   buscarTodos,
   crear,
   borrar,
+  crearGrupoGobal
 };

@@ -289,18 +289,55 @@ const actualizarAlumno = async (req, res) => {
   const { correo } = req.body;
   const { id, password, ...resto } = req.body;
 
-  console.log("req.body");
-  console.log(req.body);
+  // console.log("req.body");
+  // console.log(req.body);
 
   if (password) {
     //encriptar la constasenia
     const salt = bcryptjs.genSaltSync();
-    resto.password = bcryptjs.hashSync(password, salt);
+    resto.password = bcryptjs.hashSync(password, salt)
   }
 
+  // Actualizar la institucion anterior
   const veificar = await Alumno.findById(id);
 
-  console.log({ veificar });
+  const institucion = await Institucion.findById(veificar.institucion);
+
+  const arrayListo = institucion.grupo[institucion.grupo.length - 1].usuarios.filter((i)=> {
+    // console.log(i)
+    if (i.toString() !== id) {
+      return i
+    }
+  })
+
+  // console.log(arrayListo)
+  institucion.grupo[institucion.grupo.length - 1].usuarios = arrayListo
+
+  const { _id: institucionId, ...institucionResto } = institucion
+
+  const actualizadaInstitucion = await Institucion.findByIdAndUpdate(institucionId, institucionResto, {
+    new: true,
+  });
+
+  // Actualizar la institucion actual
+
+  // console.log(resto.institucion)
+
+  const institucionActual = await Institucion.findById(resto.institucion);
+
+  console.log("institucionActual")
+  // console.log(institucionActual)
+
+  institucionActual.grupo[institucionActual.grupo.length - 1].usuarios[institucionActual.grupo[institucionActual.grupo.length - 1].usuarios.length] = veificar._id
+
+  const { _id: institucionActualId, ...institucionActualResto } = institucionActual
+
+  const institucionActualToodo = await Institucion.findByIdAndUpdate(institucionActualId, institucionActualResto, {
+    new: true,
+  });
+
+  console.log(institucionActualToodo)
+
 
   if (veificar == null) {
     return res.status(400).json({ msg: "La Alumno no existe" });
@@ -309,7 +346,7 @@ const actualizarAlumno = async (req, res) => {
   const alumno = await Alumno.findByIdAndUpdate(id, resto, {
     new: true,
   });
-  console.log({ alumno });
+  // console.log({ alumno });
   res.status(200).json(alumno);
   // res.status(200).json({ msg: "actualizarAlumno" });
 };

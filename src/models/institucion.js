@@ -31,6 +31,15 @@ const InstitucionSchema = Schema({
       ref: "Supervisora",
     },
   ],
+  grupo: [
+    {
+      nombre: String,
+      cantidad: String,
+      fecha: String,
+      usuarios: [],
+    },
+  ],
+
   // NumeroPorSupervisoras: {
   //   type: String,
   //   default: "1",

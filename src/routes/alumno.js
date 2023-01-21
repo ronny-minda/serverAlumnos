@@ -16,7 +16,7 @@ router.get("/buscarAlumnoID", buscarAlumnoID);
 
 router.post("/buscarCedula", buscarCedula);
 
-router.post("/buscarTodasAlumno", buscarTodasAlumno);
+router.get("/buscarTodasAlumno", buscarTodasAlumno);
 
 router.post("/crearAlumno", crearAlumno);
 
